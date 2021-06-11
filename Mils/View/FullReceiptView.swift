@@ -209,7 +209,7 @@ struct FullReceiptView: View {
                                             
                                             NotificationCenter.default.addObserver(forName: NSNotification.Name("next"), object: nil, queue: .main) { (_) in
                                                 
-                                                withAnimation {scrollReader.scrollTo(scrolledStep, anchor: .center)}
+                                                withAnimation {scrollReader.scrollTo(scrolledStep, anchor: scrolledStep == homeVM.choicedRecipe.steps.count ? .center : .bottom)}
                                             }
                                         }
                                     
@@ -217,7 +217,7 @@ struct FullReceiptView: View {
                                         
                                         ForEach(homeVM.choicedRecipe.steps, id: \.self) { step in
                                             
-                                            CardView(width: geo.size.width, step: step, index: homeVM.choicedRecipe.steps.firstIndex(of: step)!)
+                                            CardView(width: geo.size.width, step: step,index: homeVM.choicedRecipe.steps.firstIndex(of: step)!)
                                                 .id(homeVM.choicedRecipe.steps.firstIndex(of: step)!)
                                         }
                                     }
@@ -265,8 +265,9 @@ struct FullReceiptView: View {
                                     .onTapGesture {
                                         
                                         withAnimation {homeVM.tapOnStep = "notTapped"}
-                                        scrolledStep = -1
+                                        scrolledStep = 1
                                         withAnimation {textForFlyingButton = "Следующий шаг"}
+                                        print(scrolledStep)
                                     }
                                 
                                 Capsule()
@@ -306,7 +307,7 @@ struct FullReceiptView: View {
                                     
                                     withAnimation {homeVM.tapOnStep = "notTapped"}
                                     scrolledStep = 0
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                     withAnimation {textForFlyingButton = "Следующий шаг"}
                                         showXmark = true
                                     }

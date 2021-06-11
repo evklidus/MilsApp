@@ -36,31 +36,20 @@ struct CardView: View {
     
     var index : Int
     
+    var nilImage = "https://image.freepik.com/free-vector/chefs-cooks-waiters-working-restaurant-kitchen_74855-6992.jpg"
+    
     var body: some View {
         
         VStack(spacing: 0) {
             
-            if !homeVM.choicedRecipe.images.isEmpty {
-                WebImage(url: URL(string: homeVM.choicedRecipe.images[index]))
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: width / 1.2, height: width / 2)
-                    .clipped()
-                    .background(Color.init(#colorLiteral(red: 0.8849371076, green: 0.883649528, blue: 0.9052258134, alpha: 1)))
-                    .cornerRadius(width / 15)
-                    .padding(.top, width / 30)
-            }
-            
-            if homeVM.choicedRecipe.images.isEmpty {
-                Image("nilImage")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: width / 1.2, height: width / 2)
-                    .clipped()
-                    .background(Color.init(#colorLiteral(red: 0.8849371076, green: 0.883649528, blue: 0.9052258134, alpha: 1)))
-                    .cornerRadius(width / 15)
-                    .padding(.top, width / 30)
-            }
+            WebImage(url: URL(string: homeVM.choicedRecipe.images.isEmpty ? nilImage : homeVM.choicedRecipe.images[homeVM.choicedRecipe.steps.firstIndex(of: step) ?? 0]))
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: width / 1.2, height: width / 2)
+                .clipped()
+                .background(Color.init(#colorLiteral(red: 0.8849371076, green: 0.883649528, blue: 0.9052258134, alpha: 1)))
+                .cornerRadius(width / 15)
+                .padding(.top, width / 30)
             
             Text(step)
                 .foregroundColor(homeVM.darkTheme ? .white : .black)

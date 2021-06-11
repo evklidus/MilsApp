@@ -36,12 +36,20 @@ struct HomeHeader : View {
                         
                         allRecipesPresent.toggle()
                     })
-                    .frame(width: allRecipesPresent ? width / 2.1 : nil)
                     .foregroundColor(.black)
                     .accentColor(Color.init(#colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)).opacity(0.75))
                     //.textContentType(.username)
                     
-                    Spacer()
+                    if allRecipesPresent {
+                        Button(action: {
+                            search = ""
+                        }) {
+                            Image(systemName: "xmark.circle.fill")
+                                .font(.system(size: width / 16))
+                                .foregroundColor(Color.gray.opacity(0.75))
+                                .padding(.trailing, 12)
+                        }
+                    }
                 }
                 .padding(.leading, 12)
                 .frame(height: width / 8)
@@ -52,24 +60,15 @@ struct HomeHeader : View {
                 .overlay(
                     RoundedRectangle(cornerRadius: width / 30).stroke(Color.init(#colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)).opacity(0.75)).opacity(showSmallCategories ? 1 : 0)
                 )
-                .overlay(
-                    Image(systemName: "xmark.circle.fill")
-                        .font(.system(size: width / 16))
-                        .foregroundColor(Color.gray.opacity(0.75))
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        .padding(.trailing, width / 30)
-                        .opacity(allRecipesPresent ? 1 : 0)
-                        .onTapGesture {
-                            search = ""
-                        }
-                )
                 
                 Spacer()
                 
                 if allRecipesPresent {
                     Button(action: {
-                        search = ""
-                        hideKeyboard()
+                        withAnimation {
+                            search = ""
+                            hideKeyboard()
+                        }
                     }) {
                         Text("Отменить")
                             .foregroundColor(Color.init(#colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)).opacity(0.9))

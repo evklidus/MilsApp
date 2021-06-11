@@ -46,7 +46,6 @@ struct MilsApp: App {
         WindowGroup {
             ContentView(data: data)
                 .environmentObject(HomeViewModel())
-//                .preferredColorScheme(.light)
         }
     }
 }

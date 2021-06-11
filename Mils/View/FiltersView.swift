@@ -61,20 +61,6 @@ struct FiltersView: View {
                 .fill(Color.gray)
                 .frame(width: 60, height: 4)
                 .padding(.vertical, 10)
-                .gesture(
-                    DragGesture()
-                        .onChanged { gesture in
-                            self.offset = gesture.translation
-                        }
-
-                        .onEnded { _ in
-                            if offset.height > 100 {
-                                withAnimation {homeVM.filtersPresent = false}
-                            } else {
-                                self.offset = .zero
-                            }
-                        }
-                )
             
             ZStack {
                 
@@ -177,6 +163,20 @@ struct FiltersView: View {
         .background(Color.white.cornerRadius(20).ignoresSafeArea())
         .offset(y: homeVM.filtersPresent ? 0 : height)
         .offset(y: offset.height)
+//        .gesture(
+//            DragGesture()
+//                .onChanged { gesture in
+//                    self.offset = gesture.translation
+//                }
+//                .onEnded { _ in
+//                    if offset.height > 100 {
+//                        withAnimation {homeVM.filtersPresent = false}
+////                        self.offset = .zero
+//                    } else {
+//                        self.offset = .zero
+//                    }
+//                }
+//        )
         .onChange(of: homeVM.filtersPresent, perform: { value in
             withAnimation {editing = false}
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
