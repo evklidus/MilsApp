@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
 
 struct CategoryView: View {
     
@@ -26,10 +25,21 @@ struct CategoryView: View {
             
             if image {
                 
-                WebImage(url: URL(string: category.image))
-                    .resizable()
-                    .frame(width: horizontalSizeClass == .compact ? width / 6 : width / 11, height: horizontalSizeClass == .compact ? width / 6 : width / 11)
-                    .animation(.interpolatingSpring(stiffness: 10, damping: 3))
+                AsyncImage(url: URL(string: category.image)) { phase in
+                    if let image = phase {
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: horizontalSizeClass == .compact ? width / 6 : width / 11, height: horizontalSizeClass == .compact ? width / 6 : width / 11)
+                    }
+                    else {
+                        Image(systemName: "photo")
+                            .frame(width: width / 1.2, height: width / 2)
+                    }
+                } placeholder: {
+                    ProgressView()
+                        .frame(width: width / 1.2, height: width / 2)
+                }
             }
             
             Text(category.name)
@@ -37,7 +47,7 @@ struct CategoryView: View {
                 .foregroundColor(homeVM.darkTheme ? .white : .black)
                 .font(horizontalSizeClass == .compact ? .system(size: width / 30) : .system(size: width / 65))
                 .multilineTextAlignment(.center)
-//                .textCase(.uppercase)
+            //                .textCase(.uppercase)
                 .padding(.horizontal, width / 60)
         }
         .frame(width: horizontalSizeClass == .compact ? width / 3.5 : width / 7, height: horizontalSizeClass == .compact ? (image ? width / 2.8 : width / 8) : width / 6)

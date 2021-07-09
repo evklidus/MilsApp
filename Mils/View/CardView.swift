@@ -7,10 +7,10 @@
 
 
 struct RoundedCorner: Shape {
-
+    
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners
-
+    
     func path(in rect: CGRect) -> Path {
         let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         return Path(path.cgPath)
@@ -24,7 +24,6 @@ extension View {
 }
 
 import SwiftUI
-import SDWebImageSwiftUI
 
 struct CardView: View {
     
@@ -42,23 +41,29 @@ struct CardView: View {
         
         VStack(spacing: 0) {
             
-            WebImage(url: URL(string: homeVM.choicedRecipe.images.isEmpty ? nilImage : homeVM.choicedRecipe.images[homeVM.choicedRecipe.steps.firstIndex(of: step) ?? 0]))
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: width / 1.2, height: width / 2)
-                .clipped()
-                .background(Color.init(#colorLiteral(red: 0.8849371076, green: 0.883649528, blue: 0.9052258134, alpha: 1)))
-                .cornerRadius(width / 15)
-                .padding(.top, width / 30)
+            AsyncImage(url: URL(string: homeVM.choicedRecipe.images.isEmpty ? nilImage : homeVM.choicedRecipe.images[homeVM.choicedRecipe.steps.firstIndex(of: step) ?? 0])) { phase in
+                if let image = phase {
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: width / 1.2, height: width / 2)
+                        .clipped()
+                        .cornerRadius(width / 15)
+                        .padding(.top, width / 30)
+                }
+                
+                else {
+                    Image(systemName: "photo")
+                        .frame(width: width / 1.2, height: width / 2)
+                }
+            } placeholder: {
+                ProgressView()
+                    .frame(width: width / 1.2, height: width / 2)
+            }
             
             Text(step)
                 .foregroundColor(homeVM.darkTheme ? .white : .black)
-//                .fontWeight(.some(Font.Weight))
                 .padding(width / 22)
-//                .multilineTextAlignment(.leading)
-//                .frame(maxWidth: .infinity, alignment: .leading)
-            
-//            Spacer(minLength: 0)
             
             Text("\(index + 1)")
                 .foregroundColor(.white)
@@ -77,6 +82,7 @@ struct CardView: View {
                 .stroke(homeVM.tapOnStep != (index < homeVM.choicedRecipe.steps.count ? homeVM.choicedRecipe.steps[index] : "Рецепт не завершен") ? (homeVM.darkTheme ? Color.init(#colorLiteral(red: 0.1332783699, green: 0.1311504841, blue: 0.136387825, alpha: 1)) : Color.init(#colorLiteral(red: 0.8849371076, green: 0.883649528, blue: 0.9052258134, alpha: 1))) : Color.red, lineWidth: 3)
         )
         .padding(width / 30)
+        //        .padding([.horizontal, .top], step == homeVM.choicedRecipe.steps.last ? width / 30 : 0)
     }
 }
 

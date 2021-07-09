@@ -24,11 +24,3 @@ struct Recipe: Identifiable, Equatable, Codable {
     var tegs : [String]
     var steps : [String]
 }
-
-struct Ingredient:  Hashable, Codable, Equatable {
-    var id : String
-    var ingradientName : String
-    var weightPerPortion : String
-    var nameForWeight : String
-    var secondId : String
-}

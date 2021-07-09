@@ -8,7 +8,6 @@
 import Foundation
 
 struct Category: Identifiable, Equatable {
-    
     var id: String
     var recipes: [Recipe]
     var image: String

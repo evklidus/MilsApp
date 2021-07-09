@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
 
 struct FullRecipeForIpad: View {
     @EnvironmentObject var homeVM: HomeViewModel
     
     @State var isTapped = false
+    
+    @State var recipe: Recipe
     
     @State var multiplier = 1 {
         
@@ -66,17 +67,29 @@ struct FullRecipeForIpad: View {
                         .padding()
                         .padding()
                         
-                        WebImage(url: URL(string: image))
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: geo2.size.width / 3, height: geo2.size.width / 2.5)
-                            .clipped()
-                            .cornerRadius(geo2.size.width / 40)
-                            .animation(.spring())
+                        AsyncImage(url: URL(string: image)) { phase in
+                            if let image = phase {
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: geo2.size.width / 3, height: geo2.size.width / 2.5)
+                                    .clipped()
+                                    .cornerRadius(geo2.size.width / 40)
+                                    .animation(.spring())
+                            }
+                            else {
+                                Image(systemName: "photo")
+                                    .frame(width: geo2.size.width / 3, height: geo2.size.width / 2.5)
+                            }
+                        } placeholder: {
+                            ProgressView()
+                                .frame(width: geo2.size.width / 3, height: geo2.size.width / 2.5)
+                        }
+                        
                         
                         HStack {
                             
-                            Text(homeVM.choicedRecipe.name)
+                            Text(recipe.name)
                                 .foregroundColor(homeVM.darkTheme ? .white : .black)
                                 .font(.system(size: geo2.size.width / 40))
                                 .fontWeight(.bold)
@@ -85,25 +98,7 @@ struct FullRecipeForIpad: View {
                             
                             Button(action: {
                                 
-                                isTapped.toggle()
-                                
-                                if isTapped == true {
-                                    
-                                    homeVM.bookmarskArray.append(homeVM.choicedRecipe)
-                                } else {
-                                    
-                                    for deleteRecipe in homeVM.bookmarskArray {
-                                        
-                                        if deleteRecipe.name == homeVM.choicedRecipe.name {
-                                            
-                                            let index = homeVM.bookmarskArray.firstIndex(of: deleteRecipe)
-                                            homeVM.bookmarskArray.remove(at: index!)
-                                        }
-                                    }
-                                }
-                                
-                                UserDefaults.standard.setValue(isTapped, forKey: homeVM.choicedRecipe.name)
-                                isTapped = UserDefaults.standard.bool(forKey: homeVM.choicedRecipe.name)
+                                withAnimation {homeVM.saveRecipe(isTapped: &isTapped, recipe: recipe)}
                             }) {
                                 
                                 Image(systemName: isTapped ? "heart.fill" : "heart")
@@ -121,18 +116,18 @@ struct FullRecipeForIpad: View {
                         
                         Spacer(minLength: 0)
                         
-                            HStack {
-                                Spacer(minLength: 0)
-                                EnergyValueView(width: geo2.size.width, text: "ккал", value: homeVM.choicedRecipe.kcal)
-                                Spacer(minLength: 0)
-                                EnergyValueView(width: geo2.size.width, text: "белки", value: homeVM.choicedRecipe.proteins)
-                                Spacer(minLength: 0)
-                                EnergyValueView(width: geo2.size.width, text: "жиры", value: homeVM.choicedRecipe.fats)
-                                Spacer(minLength: 0)
-                                EnergyValueView(width: geo2.size.width, text: "углеводы", value: homeVM.choicedRecipe.carbohydrates)
-                                Spacer(minLength: 0)
-                            }
-                            .padding([.bottom, .horizontal], geo2.size.width / 35)
+                        HStack {
+                            Spacer(minLength: 0)
+                            EnergyValueView(width: geo2.size.width, text: "ккал", value: recipe.kcal)
+                            Spacer(minLength: 0)
+                            EnergyValueView(width: geo2.size.width, text: "белки", value: recipe.proteins)
+                            Spacer(minLength: 0)
+                            EnergyValueView(width: geo2.size.width, text: "жиры", value: recipe.fats)
+                            Spacer(minLength: 0)
+                            EnergyValueView(width: geo2.size.width, text: "углеводы", value: recipe.carbohydrates)
+                            Spacer(minLength: 0)
+                        }
+                        .padding([.bottom, .horizontal], geo2.size.width / 35)
                         
                         Spacer(minLength: 0)
                     }
@@ -171,18 +166,18 @@ struct FullRecipeForIpad: View {
                                             
                                             if homeVM.tapOnStep == "notTapped" {
                                                 
-                                                withAnimation {homeVM.tapOnStep = homeVM.choicedRecipe.steps.first ?? "notTapped"}
+                                                withAnimation {homeVM.tapOnStep = recipe.steps.first ?? "notTapped"}
                                                 
                                                 withAnimation {scrollReader.scrollTo(0)} //, anchor: .center
                                                 
-                                                withAnimation {image = homeVM.choicedRecipe.images[scrolledStep - 1]}
+                                                withAnimation {image = recipe.images[scrolledStep - 1]}
                                             }
                                             
                                             else {
                                                 
                                                 withAnimation {homeVM.tapOnStep = "notTapped"}
                                                 
-                                                withAnimation {image = homeVM.choicedRecipe.image}
+                                                withAnimation {image = recipe.image}
                                             }
                                         }
                                         .onAppear() {
@@ -191,7 +186,7 @@ struct FullRecipeForIpad: View {
                                                 
                                                 withAnimation {scrollReader.scrollTo(scrolledStep)}
                                                 
-                                                withAnimation(.easeInOut) {image = withAnimation(.easeInOut) {homeVM.choicedRecipe.images[scrolledStep - 1]}}
+                                                withAnimation(.easeInOut) {image = withAnimation(.easeInOut) {recipe.images[scrolledStep - 1]}}
                                             }
                                         }
                                 }
@@ -200,10 +195,10 @@ struct FullRecipeForIpad: View {
                                 
                                 VStack(alignment: .leading) {
                                     
-                                    ForEach(homeVM.choicedRecipe.steps, id: \.self) { step in
+                                    ForEach(recipe.steps, id: \.self) { step in
                                         
                                         StepView(width: geo2.size.width, step: step)
-                                            .id(homeVM.choicedRecipe.steps.firstIndex(of: step)!)
+                                            .id(recipe.steps.firstIndex(of: step)!)
                                     }
                                     
                                     Spacer()
@@ -217,67 +212,67 @@ struct FullRecipeForIpad: View {
                     .overlay(
                         
                         HStack(spacing: geo2.size.width / 80) {
+                        
+                        if (scrolledStep - recipe.steps.count) != 0 {
                             
-                            if (scrolledStep - homeVM.choicedRecipe.steps.count) != 0 {
-                                
-                                Image(systemName: "xmark")
-                                    .font(.system(size: geo2.size.width / 45, weight: .bold))
-                                    .foregroundColor(.red)
-                                    .onTapGesture {
-                                        
-                                        withAnimation {homeVM.tapOnStep = "notTapped"}
-                                        scrolledStep = 0
-                                        withAnimation {textForFlyingButton = "Следующий шаг"}
-                                    }
-                                
-                                
-                                Capsule()
-                                    .fill(Color.gray.opacity(0.15))
-                                    .frame(width: 2, height: geo2.size.width / 36)
-                            }
-                            
-                            Text(textForFlyingButton)
-                                .font(.system(size: geo2.size.width / 45))
-                                .foregroundColor(Color.init(#colorLiteral(red: 1, green: 0.7037059665, blue: 0.1468696296, alpha: 1)))
-                                .fontWeight(.heavy)
-                            
-                            Image(systemName: "arrowtriangle.trailing.fill")
-                                .font(.system(size: geo2.size.width / 32))
-                                .foregroundColor(.white)
-                        }
-                        .padding([.vertical, .leading], geo2.size.width / 80)
-                        .background(Color.white)
-                        .cornerRadius(geo2.size.width / 75)
-                        .shadow(color: Color.black.opacity(homeVM.darkTheme ? 0 : 0.3), radius: 20, x: 0, y: 10)
-                        .shadow(color: Color.white.opacity(homeVM.darkTheme ? 0 : 0.2), radius: 5, x: 0, y: 2)
-                        .padding(.horizontal, geo2.size.width / 7.25)
-                        .frame(maxHeight: .infinity, alignment: .bottom)
-                        .opacity(homeVM.tapOnStep == "notTapped" ? 0 : 1)
-                        .padding(.bottom, geo2.size.width / 40)
-                        .onTapGesture {
-                            DispatchQueue.main.async {
-                                scrolledStep += 1
-                                if scrolledStep <= homeVM.choicedRecipe.steps.count {
-                                    withAnimation {homeVM.tapOnStep = homeVM.choicedRecipe.steps[scrolledStep - 1]}
-                                    NotificationCenter.default.post(name: NSNotification.Name("next"), object: nil)
-                                }
-                                else {
+                            Image(systemName: "xmark")
+                                .font(.system(size: geo2.size.width / 45, weight: .bold))
+                                .foregroundColor(.red)
+                                .onTapGesture {
+                                    
                                     withAnimation {homeVM.tapOnStep = "notTapped"}
-                                    
-                                    scrolledStep = 1
-                                    
+                                    scrolledStep = 0
                                     withAnimation {textForFlyingButton = "Следующий шаг"}
-                                    
-                                    withAnimation {image = homeVM.choicedRecipe.image}
-                                    
                                 }
+                            
+                            
+                            Capsule()
+                                .fill(Color.gray.opacity(0.15))
+                                .frame(width: 2, height: geo2.size.width / 36)
+                        }
+                        
+                        Text(textForFlyingButton)
+                            .font(.system(size: geo2.size.width / 45))
+                            .foregroundColor(Color.init(#colorLiteral(red: 1, green: 0.7037059665, blue: 0.1468696296, alpha: 1)))
+                            .fontWeight(.heavy)
+                        
+                        Image(systemName: "arrowtriangle.trailing.fill")
+                            .font(.system(size: geo2.size.width / 32))
+                            .foregroundColor(.white)
+                    }
+                            .padding([.vertical, .leading], geo2.size.width / 80)
+                            .background(Color.white)
+                            .cornerRadius(geo2.size.width / 75)
+                            .shadow(color: Color.black.opacity(homeVM.darkTheme ? 0 : 0.3), radius: 20, x: 0, y: 10)
+                            .shadow(color: Color.white.opacity(homeVM.darkTheme ? 0 : 0.2), radius: 5, x: 0, y: 2)
+                            .padding(.horizontal, geo2.size.width / 7.25)
+                            .frame(maxHeight: .infinity, alignment: .bottom)
+                            .opacity(homeVM.tapOnStep == "notTapped" ? 0 : 1)
+                            .padding(.bottom, geo2.size.width / 40)
+                            .onTapGesture {
+                        DispatchQueue.main.async {
+                            scrolledStep += 1
+                            if scrolledStep <= recipe.steps.count {
+                                withAnimation {homeVM.tapOnStep = recipe.steps[scrolledStep - 1]}
+                                NotificationCenter.default.post(name: NSNotification.Name("next"), object: nil)
+                            }
+                            else {
+                                withAnimation {homeVM.tapOnStep = "notTapped"}
                                 
-                                if (scrolledStep - homeVM.choicedRecipe.steps.count) == 0 {
-                                    
-                                    withAnimation {textForFlyingButton = "Закончить"}
-                                }
+                                scrolledStep = 1
+                                
+                                withAnimation {textForFlyingButton = "Следующий шаг"}
+                                
+                                withAnimation {image = recipe.image}
+                                
+                            }
+                            
+                            if (scrolledStep - recipe.steps.count) == 0 {
+                                
+                                withAnimation {textForFlyingButton = "Закончить"}
                             }
                         }
+                    }
                         
                         
                     )
@@ -286,47 +281,47 @@ struct FullRecipeForIpad: View {
                 .ignoresSafeArea()
                 .overlay(
                     VStack {
-                    IngredientsView(width: UIScreen.main.bounds.width, fullRecipe: true, pad: true)
+                    IngredientsView(width: UIScreen.main.bounds.width, pad: true)
                         .frame(width: geo2.size.width, height: geo2.size.height)
                         .background(
                             Color.black.ignoresSafeArea().opacity(discloseIngredients ? 0.3 : 0)
                                 .onTapGesture {
-                                    
-                                    withAnimation {discloseIngredients.toggle()}
-                                }
+                            
+                            withAnimation {discloseIngredients.toggle()}
+                        }
                         )
                         .opacity(discloseIngredients ? 1 : 0)
-                    }
+                }
                 )
                 .onAppear() {
                     DispatchQueue.main.async {
-                    
-                        isTapped = UserDefaults.standard.bool(forKey: homeVM.choicedRecipe.name)
                         
-                        multiplier = UserDefaults.standard.integer(forKey: homeVM.choicedRecipe.id + "multiplier")
+                        isTapped = UserDefaults.standard.bool(forKey: recipe.name)
                         
-                        withAnimation {image = homeVM.choicedRecipe.image}
+                        multiplier = UserDefaults.standard.integer(forKey: recipe.id + "multiplier")
+                        
+                        withAnimation {image = recipe.image}
                     }
                 }
                 .onChange(of: homeVM.isPresent, perform: { value in
                     
                     DispatchQueue.main.async {
                         
-                        isTapped = UserDefaults.standard.bool(forKey: homeVM.choicedRecipe.name)
+                        isTapped = UserDefaults.standard.bool(forKey: recipe.name)
                         
                         if homeVM.isPresent {
-                            multiplier = UserDefaults.standard.integer(forKey: "\(homeVM.choicedRecipe.id)multiplier")
+                            multiplier = UserDefaults.standard.integer(forKey: "\(recipe.id)multiplier")
                         }
                         
                         withAnimation {homeVM.tapOnStep = "notTapped"}
                         
-                        withAnimation {image = homeVM.choicedRecipe.image}
+                        withAnimation {image = recipe.image}
                         
                         scrolledStep = 1
                     }
                 })
                 .onChange(of: multiplier) { value in
-                    UserDefaults.standard.setValue(multiplier, forKey: "\(homeVM.choicedRecipe.id)multiplier")
+                    UserDefaults.standard.setValue(multiplier, forKey: "\(recipe.id)multiplier")
                 }
             }
         }

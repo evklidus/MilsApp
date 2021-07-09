@@ -8,15 +8,17 @@
 import SwiftUI
 
 struct CustomTextField : View {
-    
+
     @Binding var text : String
-    
+
     var grayText : String
-    
+
+//    @FocusState var showKeyBoard : Bool
+
     var body : some View {
-        
+
         HStack(spacing: 3) {
-            
+
             TextField(grayText, text: $text)
         }
         .padding(.vertical, 8)
@@ -36,29 +38,31 @@ struct AddingIngredientView: View {
     
     var namesForWeight = ["г", "кг", "мл", "л", "шт"]
     
+    enum Field {
+        case name
+        case weight
+    }
+    
+    @FocusState var focusedField : Field?
+    
     var body: some View {
         GeometryReader { geo in
             
             VStack {
                 
-                ZStack {
+                HStack {
                     
-                    HStack {
-                        
-                        Button(action: {
-                            withAnimation {
-                                hideKeyboard()
-                                homeVM.isPresentAddingIngredient.toggle()
-                                clear()
-                            }
-                        }) {
-                            
-                            Image(systemName: "xmark")
-                                .font(.system(size: geo.size.width / 16, weight: .heavy))
-                                .foregroundColor(.orange)
+                    Button(action: {
+                        withAnimation {
+                            hideKeyboard()
+                            homeVM.isPresentAddingIngredient.toggle()
+                            clear()
                         }
+                    }) {
                         
-                        Spacer(minLength: 0)
+                        Image(systemName: "xmark")
+                            .font(.system(size: geo.size.width / 16, weight: .heavy))
+                            .foregroundColor(.orange)
                     }
                     
                     Text("Добавление ингредиента")
@@ -69,10 +73,14 @@ struct AddingIngredientView: View {
                 .padding()
                 
                 VStack {
+                    
                     CustomTextField(text: $name, grayText: "Название")
+                        .focused($focusedField, equals: .name)
+                        .submitLabel(.next)
+                    
                     CustomTextField(text: $weight, grayText: "Вес")
-//                        .textContentType(.oneTimeCode)
-                        .keyboardType(.numberPad)
+                        .focused($focusedField, equals: .weight)
+                        .submitLabel(.done)
                     
                     Picker("", selection: $nameForWeight) {
                         ForEach(namesForWeight, id: \.self) {
@@ -105,10 +113,25 @@ struct AddingIngredientView: View {
                         .padding(.bottom, 20)
                 }
             }
-            .background(Color.white.ignoresSafeArea())
+            .background(homeVM.darkTheme ? Color.init(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)).ignoresSafeArea() : Color.white.ignoresSafeArea())
             .cornerRadius(20)
             .padding(.horizontal, 20)
             .frame(maxHeight: .infinity, alignment: .center)
+            .onChange(of: homeVM.isPresentAddingIngredient, perform: { value in
+                
+                if value {
+                    
+                    focusedField = .name
+                }
+            })
+            .onSubmit {
+                switch focusedField {
+                case .name:
+                    focusedField = .weight
+                default:
+                    print("Hi!")
+                }
+            }
         }
     }
     
@@ -116,6 +139,6 @@ struct AddingIngredientView: View {
         
         name = ""
         weight = ""
-        nameForWeight = ""
+        nameForWeight = "г"
     }
 }

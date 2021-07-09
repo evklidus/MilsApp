@@ -27,7 +27,7 @@ struct PurchasesView: View {
         
         GeometryReader { geo in
             
-            ScrollView {
+            VStack {
                 
                 HStack {
                     Text("Покупки")
@@ -113,15 +113,18 @@ struct PurchasesView: View {
                 }
                 .padding([.horizontal, .top])
                 
-                ScrollView(showsIndicators: true) {
+                List(homeVM.purchasesArray, id: \.self) { ingredient in
                     
-                    ForEach(homeVM.purchasesArray, id: \.self) { ingredient in
-                        
-                        NewIngredientCell2(ingredient: ingredient)
-                    }
-                    
-                    Spacer()
-                        .frame(width: geo.size.width, height: geo.size.width / 6)
+                    NewIngredientCell2(ingredient: ingredient)
+                        .swipeActions(allowsFullSwipe: true) {
+                            
+                            Button(role: .destructive) {
+                                NewIngredientCell2(ingredient: ingredient).deleteIngredient()
+                            } label: {
+                                Label("Trash", systemImage: "trash.fill")
+                            }
+
+                        }
                 }
                 
                 Spacer()

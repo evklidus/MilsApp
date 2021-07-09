@@ -23,7 +23,7 @@ struct RecipeInfoView: View {
     
     var body: some View {
         
-        VStack {
+        VStack(spacing: 12) {
             
             Text(image)
                 .font(.system(size: horizontalSizeClass == .compact ? width / 12 : width / 36))
@@ -32,7 +32,7 @@ struct RecipeInfoView: View {
             Text(text)
                 .font(.system(size: horizontalSizeClass == .compact ? width / 25 : width / 75, weight: .bold))
                 .foregroundColor(.white)
-                .padding(.top, 2)
+//                .padding(.top, 2)
         }
         .padding()
         .frame(width: horizontalSizeClass == .compact ? width / 3.8 : width / 11)

@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Combine
-import SDWebImageSwiftUI
 
 private var cancellableSet: Set<AnyCancellable> = []
 

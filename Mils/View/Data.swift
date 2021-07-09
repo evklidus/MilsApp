@@ -22,7 +22,7 @@ class OurData: ObservableObject {
                    kcal: "220", proteins: "9.5", fats: "20.0", carbohydrates: "0.5",
                    ingredients: [
                     Ingredient(id: "C1_R1_IN1", ingradientName: "Вода", weightPerPortion: "400", nameForWeight: "мл", secondId: "C1_R1_N"),
-                    Ingredient(id: "C1_R1_IN2", ingradientName: "Сосиски", weightPerPortion: "2", nameForWeight: "штуки", secondId: "C1_R1_N"),
+                    Ingredient(id: "C1_R1_IN2", ingradientName: "Сосиски", weightPerPortion: "2", nameForWeight: "шт", secondId: "C1_R1_N"),
                    ],
                    tegs: ["легко", "100-200 ккал"],
                    steps: ["Снять полиэтиленовую пленку с сосисок, надрезав ее с одного конца и потянув вокруг сосиски по спирали. Натуральную оболочку не снимать",
@@ -50,7 +50,7 @@ class OurData: ObservableObject {
                     Ingredient(id: "C1_R2_IN4", ingradientName: "Красный перец", weightPerPortion: "0.5", nameForWeight: "шт", secondId: "C1_R2_N"),
                     Ingredient(id: "C1_R2_IN5", ingradientName: "Репчатый лук", weightPerPortion: "0.5", nameForWeight: "шт", secondId: "C1_R2_N"),
                     Ingredient(id: "C1_R2_IN6", ingradientName: "Чеснок", weightPerPortion: "0.5", nameForWeight: "зубчика", secondId: "C1_R2_N"),
-                    Ingredient(id: "C1_R2_IN7", ingradientName: "Зеленый лук", weightPerPortion: "1", nameForWeight: "штука", secondId: "C1_R2_N"),
+                    Ingredient(id: "C1_R2_IN7", ingradientName: "Зеленый лук", weightPerPortion: "1", nameForWeight: "шт", secondId: "C1_R2_N"),
                     Ingredient(id: "C1_R2_IN8", ingradientName: "Соевый соус", weightPerPortion: "1", nameForWeight: "ч.л.", secondId: "C1_R2_N"),
                     Ingredient(id: "C1_R2_IN9", ingradientName: "Молотый имбирь", weightPerPortion: "0.5", nameForWeight: "ч.л.", secondId: "C1_R2_N"),
                    ],
@@ -439,8 +439,8 @@ class OurData: ObservableObject {
                    cost: "$$",
                    kcal: "175", proteins: "81.2", fats: "6.8", carbohydrates: "11.4",
                    ingredients: [
-                    Ingredient(id: "C2_R1_IN1", ingradientName: "Говядина", weightPerPortion: "250", nameForWeight: "грамм", secondId: "C2_R1_N"),
-                    Ingredient(id: "C2_R1_IN2", ingradientName: "Размарин", weightPerPortion: "15", nameForWeight: "грамм", secondId: "C2_R1_N"),
+                    Ingredient(id: "C2_R1_IN1", ingradientName: "Говядина", weightPerPortion: "250", nameForWeight: "г", secondId: "C2_R1_N"),
+                    Ingredient(id: "C2_R1_IN2", ingradientName: "Размарин", weightPerPortion: "15", nameForWeight: "г", secondId: "C2_R1_N"),
                     Ingredient(id: "C2_R1_IN3", ingradientName: "Соль", weightPerPortion: "3", nameForWeight: "щепотки", secondId: "C2_R1_N"),
                    ],
                    tegs: ["средне", "200-300 ккал"],

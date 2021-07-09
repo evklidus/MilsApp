@@ -14,14 +14,12 @@ struct TabBar: View {
     @State var current = "Главное"
     
     var width : CGFloat {
-        
         get {
             return UIScreen.main.bounds.width > UIScreen.main.bounds.height ? UIScreen.main.bounds.height : UIScreen.main.bounds.width
         }
     }
     
     var height : CGFloat {
-        
         get {
             return UIScreen.main.bounds.width < UIScreen.main.bounds.height ? UIScreen.main.bounds.height : UIScreen.main.bounds.width
         }
@@ -41,7 +39,7 @@ struct TabBar: View {
                 
                 Home(data: data)
                     .tag("Главное")
-                    .animation(.easeIn(duration: 5))
+//                    .animation(.easeIn(duration: 5))
                 
                 FavouriteView()
                     .tag("Избранное")
@@ -77,6 +75,7 @@ struct TabBar: View {
             }
         }
         .ignoresSafeArea(.keyboard)
+        .preferredColorScheme(homeVM.darkTheme ? .dark : .light)
         .onAppear(){
             DispatchQueue.main.async {
                 UITabBar.appearance().isHidden = true
@@ -89,7 +88,7 @@ struct TabBar: View {
             }
         }
         .overlay(
-            FullReceiptView()
+            FullReceiptView(recipe: $homeVM.choicedRecipe)
                 .offset(y: homeVM.isPresent ? 0 : height)
         )
         .overlay(
@@ -99,7 +98,7 @@ struct TabBar: View {
                     Color.black.ignoresSafeArea().frame(width: width, height: height).opacity(homeVM.isPresentAddingIngredient ? 0.3 : 0)
                         .onTapGesture {
                             withAnimation {homeVM.isPresentAddingIngredient.toggle()}
-                            hideKeyboard()
+                            homeVM.hideKeyboard()
                         }
                 )
                 .opacity(homeVM.isPresentAddingIngredient ? 1 : 0)

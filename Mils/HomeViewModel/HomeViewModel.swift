@@ -9,9 +9,9 @@ import SwiftUI
 
 class HomeViewModel: ObservableObject {
     
-    @Published var choicedCategory = Category(id: "99990", recipes: [Recipe](), image: "Загрузка", name: "Загрузка")
+    @Published var choicedCategory: Category = Category(id: "99990", recipes: [Recipe](), image: "Загрузка", name: "Загрузка")
     
-    @Published var choicedRecipe = Recipe(id: "99989", name: "Загрузка", image: "", images: [], rating: "", time: "", complexity: "", cost: "", kcal: "", proteins: "", fats: "", carbohydrates: "", ingredients: [Ingredient(id: "1lh", ingradientName: "", weightPerPortion: "", nameForWeight: "", secondId: "")], tegs: [], steps: [])
+    @Published var choicedRecipe: Recipe = Recipe(id: "999989", name: "Загрузка", image: "", images: [], rating: "", time: "", complexity: "", cost: "", kcal: "", proteins: "", fats: "", carbohydrates: "", ingredients: [Ingredient(id: "1lh", ingradientName: "", weightPerPortion: "", nameForWeight: "", secondId: "")], tegs: [], steps: [])
     
     @Published var isPresent = false
     
@@ -45,4 +45,92 @@ class HomeViewModel: ObservableObject {
     @Published var showAllRecipes : Bool = false
     
     @Published var confirmationCleanIngredients : Bool = false
+    
+    func choiceRecipe(recipe: Recipe) {
+        choicedRecipe = recipe
+        withAnimation {isPresent.toggle()}
+        withAnimation {hideKeyboard()}
+    }
+    
+    func saveRecipe(isTapped: inout Bool, recipe: Recipe) {
+        isTapped.toggle()
+        
+        if isTapped == true {
+            
+            bookmarskArray.append(recipe)
+            simpleSuccess(style: .rigid)
+        } else {
+            
+            for deleteRecipe in bookmarskArray {
+                
+                if deleteRecipe.name == recipe.name {
+                    
+                    let index = bookmarskArray.firstIndex(of: deleteRecipe)
+                    bookmarskArray.remove(at: index!)
+                }
+            }
+        }
+        
+        UserDefaults.standard.setValue(isTapped, forKey: recipe.name)
+        isTapped = UserDefaults.standard.bool(forKey: recipe.name)
+    }
+    
+    func appendIngredient(ingredient: Ingredient, addArr: inout [String]) {
+        
+        var idsArray = UserDefaults.standard.stringArray(forKey: ingredient.ingradientName) ?? []
+        
+        var secondIdsArray = UserDefaults.standard.stringArray(forKey: ingredient.ingradientName + "!") ?? []
+        
+        if self.purchasesArray.count != 0 {
+            
+            var add = false
+            
+            for ingredientFromArr in self.purchasesArray {
+                
+                if ingredientFromArr.ingradientName == ingredient.ingradientName {
+                    
+                    var updatedIngredient = ingredientFromArr
+                    
+                    updatedIngredient.weightPerPortion = String(Int(ingredientFromArr.weightPerPortion)! + Int(ingredient.weightPerPortion)!)
+                    
+                    self.purchasesArray[self.purchasesArray.firstIndex(of: ingredientFromArr)!] = updatedIngredient
+                    
+                    add = true
+                }
+            }
+            
+            if add == false {
+                
+                self.purchasesArray.append(ingredient)
+            }
+        }
+        else {
+            self.purchasesArray.append(ingredient)
+        }
+        
+        UserDefaults.standard.setValue(true, forKey: ingredient.id)
+        
+        idsArray.append(ingredient.id)
+        
+        UserDefaults.standard.setValue(idsArray, forKey: ingredient.ingradientName)
+        
+        secondIdsArray.append(ingredient.secondId)
+        
+        UserDefaults.standard.setValue(secondIdsArray, forKey: ingredient.ingradientName + "!")
+        
+        withAnimation {addArr.append(ingredient.ingradientName)}
+        
+        UserDefaults.standard.setValue(addArr, forKey: self.choicedRecipe.ingredients.first!.secondId)
+    }
+    
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+    
+    func simpleSuccess(style: UIImpactFeedbackGenerator.FeedbackStyle) {
+        //        let generator = UINotificationFeedbackGenerator()
+        //        generator.notificationOccurred(.success)
+        let generator = UIImpactFeedbackGenerator(style: style)
+        generator.impactOccurred()
+    }
 }
