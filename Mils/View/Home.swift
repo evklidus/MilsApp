@@ -225,16 +225,3 @@ struct Home: View {
 }
 
 //UIScreen.main.bounds.width > UIScreen.main.bounds.height ? 4 : 3
-extension View {
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        Home(data: OurData())
-            .environmentObject(HomeViewModel())
-            .preferredColorScheme(.light)
-    }
-}

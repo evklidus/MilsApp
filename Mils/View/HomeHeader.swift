@@ -67,7 +67,7 @@ struct HomeHeader : View {
                     Button(action: {
                         withAnimation {
                             search = ""
-                            hideKeyboard()
+                            homeVM.hideKeyboard()
                         }
                     }) {
                         Text("Отменить")

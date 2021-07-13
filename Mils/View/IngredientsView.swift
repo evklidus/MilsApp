@@ -62,14 +62,7 @@ struct IngredientsView: View {
             }
             
             Button {
-                DispatchQueue.main.async {
-                    for ingredient in homeVM.choicedRecipe.ingredients {
-                        if !(homeVM.purchasesArray.contains(ingredient)) {
-                            homeVM.appendIngredient(ingredient: ingredient, addArr: &addArr)
-                        }
-                    }
-                    allAdded = true
-                }
+                homeVM.addAllIngredients(allAdded: &allAdded, addArr: &addArr)
             } label: {
                 Text("Добавить всё")
                     .font(.title3)
@@ -91,17 +84,7 @@ struct IngredientsView: View {
         .shadow(color: Color.white.opacity(homeVM.darkTheme ? 0 : 0.2), radius: 5, x: 0, y: 2)
         .padding()
         .onChange(of: homeVM.isPresent) { _ in
-            DispatchQueue.main.async {
-                addArr = UserDefaults.standard.stringArray(forKey: homeVM.choicedRecipe.ingredients.first!.secondId) ?? []
-                
-                for ingredient in homeVM.choicedRecipe.ingredients {
-                    if !(homeVM.purchasesArray.contains(ingredient)) {
-                        allAdded = false
-                    }
-                }
-            }
+            homeVM.reloadIngView(addArr: &addArr, allAdded: &allAdded)
         }
     }
-    
-    
 }

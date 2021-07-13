@@ -115,11 +115,11 @@ struct PurchasesView: View {
                 
                 List(homeVM.purchasesArray, id: \.self) { ingredient in
                     
-                    NewIngredientCell2(ingredient: ingredient)
+                    IngredientCellForPurchases(ingredient: ingredient)
                         .swipeActions(allowsFullSwipe: true) {
                             
                             Button(role: .destructive) {
-                                NewIngredientCell2(ingredient: ingredient).deleteIngredient()
+                                IngredientCellForPurchases(ingredient: ingredient).deleteIngredient()
                             } label: {
                                 Label("Trash", systemImage: "trash.fill")
                             }

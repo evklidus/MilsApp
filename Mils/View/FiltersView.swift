@@ -76,7 +76,7 @@ struct FiltersView: View {
                     Button(action: {
                         
                         withAnimation {homeVM.filtersPresent = false}
-                        withAnimation {hideKeyboard()}
+                        withAnimation {homeVM.hideKeyboard()}
                     }) {
                         
                         Text("Отменить")

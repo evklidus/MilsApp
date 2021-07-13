@@ -41,6 +41,7 @@
 		18CADAF52670DA4E0025C288 /* PurchasesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CADAC02670DA4E0025C288 /* PurchasesView.swift */; };
 		18CADAF62670DA4E0025C288 /* ScrollButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CADAC12670DA4E0025C288 /* ScrollButton.swift */; };
 		18CADB092670DD520025C288 /* MilsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CADB082670DD520025C288 /* MilsApp.swift */; };
+		18E8F5D4269E08EF004925CE /* IngredientCellForPurchases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E8F5D3269E08EF004925CE /* IngredientCellForPurchases.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		18CADAC02670DA4E0025C288 /* PurchasesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasesView.swift; sourceTree = "<group>"; };
 		18CADAC12670DA4E0025C288 /* ScrollButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollButton.swift; sourceTree = "<group>"; };
 		18CADB082670DD520025C288 /* MilsApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MilsApp.swift; sourceTree = "<group>"; };
+		18E8F5D3269E08EF004925CE /* IngredientCellForPurchases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCellForPurchases.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,21 +212,22 @@
 		18CADAAB2670DA4D0025C288 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				18CADAB82670DA4E0025C288 /* IngredientsView.swift */,
+				18CADABD2670DA4E0025C288 /* ReceiptView.swift */,
+				18CADAC02670DA4E0025C288 /* PurchasesView.swift */,
+				18E8F5D3269E08EF004925CE /* IngredientCellForPurchases.swift */,
 				18CADAB62670DA4E0025C288 /* NewIngredientCell.swift */,
+				18CADAB82670DA4E0025C288 /* IngredientsView.swift */,
+				1843A5772695B7E800D31E1C /* FullRecipeForIphone.swift */,
 				18CADAAC2670DA4D0025C288 /* TabBar.swift */,
 				18CADAB52670DA4E0025C288 /* FullReceiptView.swift */,
 				18CADAC12670DA4E0025C288 /* ScrollButton.swift */,
-				1843A5772695B7E800D31E1C /* FullRecipeForIphone.swift */,
 				18CADAAD2670DA4E0025C288 /* FullRecipeForIpad.swift */,
-				18CADABD2670DA4E0025C288 /* ReceiptView.swift */,
 				18CADAB42670DA4E0025C288 /* Home.swift */,
 				1843A5752695B76E00D31E1C /* HomeHeader.swift */,
 				18CADAB22670DA4E0025C288 /* CardView.swift */,
 				18CADAAE2670DA4E0025C288 /* CategoryView.swift */,
 				18CADABF2670DA4E0025C288 /* RecipeInfoView.swift */,
 				18B61AC72670E3180008850F /* AddingIngredientView.swift */,
-				18CADAC02670DA4E0025C288 /* PurchasesView.swift */,
 				18CADABE2670DA4E0025C288 /* FiltersView.swift */,
 				18CADAB92670DA4E0025C288 /* ConfirmationCleanIngredients.swift */,
 				18CADAAF2670DA4E0025C288 /* StepView.swift */,
@@ -399,6 +402,7 @@
 				18CADAF02670DA4E0025C288 /* FavouriteView.swift in Sources */,
 				18CADAF12670DA4E0025C288 /* EnergyValueView.swift in Sources */,
 				18B61AC22670E0B10008850F /* Data.swift in Sources */,
+				18E8F5D4269E08EF004925CE /* IngredientCellForPurchases.swift in Sources */,
 				18CADADA2670DA4E0025C288 /* Category.swift in Sources */,
 				1843A5762695B76E00D31E1C /* HomeHeader.swift in Sources */,
 			);

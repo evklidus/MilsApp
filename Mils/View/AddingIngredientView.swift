@@ -54,7 +54,7 @@ struct AddingIngredientView: View {
                     
                     Button(action: {
                         withAnimation {
-                            hideKeyboard()
+                            homeVM.hideKeyboard()
                             homeVM.isPresentAddingIngredient.toggle()
                             clear()
                         }
@@ -96,7 +96,7 @@ struct AddingIngredientView: View {
                     let ingredient = Ingredient(id: UUID().uuidString, ingradientName: name, weightPerPortion: weight, nameForWeight: nameForWeight.lowercased(), secondId: UUID().uuidString)
                     
                     homeVM.purchasesArray.append(ingredient)
-                    hideKeyboard()
+                    homeVM.hideKeyboard()
                     homeVM.isPresentAddingIngredient.toggle()
                     
                     clear()

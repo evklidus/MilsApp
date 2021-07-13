@@ -110,7 +110,7 @@ struct TabBar: View {
                     Color.black.ignoresSafeArea().frame(width: width, height: height).opacity(homeVM.filtersPresent ? 0.3 : 0)
                         .onTapGesture {
                             withAnimation {homeVM.filtersPresent.toggle()}
-                            withAnimation {hideKeyboard()}
+            withAnimation {homeVM.hideKeyboard()}
                         }
                 )
                 .frame(maxHeight: .infinity, alignment: .bottom)

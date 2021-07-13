@@ -32,9 +32,7 @@ struct ReceiptView: View {
                         .clipped()
                         .cornerRadius(horizontalSizeClass == .compact ? width / 20 : width / 35)
                         .onTapGesture {
-                            homeVM.choicedRecipe = recipe
-                            withAnimation {homeVM.isPresent.toggle()}
-                            withAnimation {hideKeyboard()}
+                            homeVM.choiceRecipe(recipe: recipe)
                         }
                     //                .onTapGesture(count: 2) {
                     //                    withAnimation {saveRecipe()}
