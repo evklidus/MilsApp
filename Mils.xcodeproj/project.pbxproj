@@ -10,6 +10,9 @@
 		1843A5762695B76E00D31E1C /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1843A5752695B76E00D31E1C /* HomeHeader.swift */; };
 		1843A5782695B7E800D31E1C /* FullRecipeForIphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1843A5772695B7E800D31E1C /* FullRecipeForIphone.swift */; };
 		18861FE326947BDE0001E6B8 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18861FE226947BDE0001E6B8 /* Ingredient.swift */; };
+		1889E14226A1BB9500092CF9 /* CheckBoxes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1889E14126A1BB9500092CF9 /* CheckBoxes.swift */; };
+		1889E14426A1C27300092CF9 /* AllRecipesToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1889E14326A1C27300092CF9 /* AllRecipesToggle.swift */; };
+		1889E14626A1C3D700092CF9 /* CustomTextFieldForFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1889E14526A1C3D700092CF9 /* CustomTextFieldForFilters.swift */; };
 		18B61AC02670DE080008850F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18B61ABF2670DE080008850F /* Assets.xcassets */; };
 		18B61AC22670E0B10008850F /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B61AC12670E0B10008850F /* Data.swift */; };
 		18B61AC42670E13D0008850F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B61AC32670E13D0008850F /* ContentView.swift */; };
@@ -29,7 +32,7 @@
 		18CADAE92670DA4E0025C288 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CADAB42670DA4E0025C288 /* Home.swift */; };
 		18CADAEA2670DA4E0025C288 /* FullReceiptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CADAB52670DA4E0025C288 /* FullReceiptView.swift */; };
 		18CADAEB2670DA4E0025C288 /* NewIngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CADAB62670DA4E0025C288 /* NewIngredientCell.swift */; };
-		18CADAEC2670DA4E0025C288 /* CheckForСomplexity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CADAB72670DA4E0025C288 /* CheckForСomplexity.swift */; };
+		18CADAEC2670DA4E0025C288 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CADAB72670DA4E0025C288 /* CheckBox.swift */; };
 		18CADAED2670DA4E0025C288 /* IngredientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CADAB82670DA4E0025C288 /* IngredientsView.swift */; };
 		18CADAEE2670DA4E0025C288 /* ConfirmationCleanIngredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CADAB92670DA4E0025C288 /* ConfirmationCleanIngredients.swift */; };
 		18CADAEF2670DA4E0025C288 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CADABA2670DA4E0025C288 /* Settings.swift */; };
@@ -65,6 +68,9 @@
 		1843A5752695B76E00D31E1C /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
 		1843A5772695B7E800D31E1C /* FullRecipeForIphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullRecipeForIphone.swift; sourceTree = "<group>"; };
 		18861FE226947BDE0001E6B8 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		1889E14126A1BB9500092CF9 /* CheckBoxes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxes.swift; sourceTree = "<group>"; };
+		1889E14326A1C27300092CF9 /* AllRecipesToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecipesToggle.swift; sourceTree = "<group>"; };
+		1889E14526A1C3D700092CF9 /* CustomTextFieldForFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldForFilters.swift; sourceTree = "<group>"; };
 		18B61ABF2670DE080008850F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18B61AC12670E0B10008850F /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		18B61AC32670E13D0008850F /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -90,7 +96,7 @@
 		18CADAB42670DA4E0025C288 /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		18CADAB52670DA4E0025C288 /* FullReceiptView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullReceiptView.swift; sourceTree = "<group>"; };
 		18CADAB62670DA4E0025C288 /* NewIngredientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewIngredientCell.swift; sourceTree = "<group>"; };
-		18CADAB72670DA4E0025C288 /* CheckForСomplexity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CheckForСomplexity.swift"; sourceTree = "<group>"; };
+		18CADAB72670DA4E0025C288 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		18CADAB82670DA4E0025C288 /* IngredientsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientsView.swift; sourceTree = "<group>"; };
 		18CADAB92670DA4E0025C288 /* ConfirmationCleanIngredients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationCleanIngredients.swift; sourceTree = "<group>"; };
 		18CADABA2670DA4E0025C288 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -130,6 +136,73 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18BB79AB26AA66C4000546C4 /* FullRecipeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				18CADAB52670DA4E0025C288 /* FullReceiptView.swift */,
+				1843A5772695B7E800D31E1C /* FullRecipeForIphone.swift */,
+				18CADAAD2670DA4E0025C288 /* FullRecipeForIpad.swift */,
+				18CADABC2670DA4E0025C288 /* EnergyValueView.swift */,
+				18CADAB82670DA4E0025C288 /* IngredientsView.swift */,
+				18CADAB22670DA4E0025C288 /* CardView.swift */,
+				18CADAAF2670DA4E0025C288 /* StepView.swift */,
+				18CADABF2670DA4E0025C288 /* RecipeInfoView.swift */,
+				18CADAC12670DA4E0025C288 /* ScrollButton.swift */,
+				18CADAB62670DA4E0025C288 /* NewIngredientCell.swift */,
+			);
+			path = FullRecipeScreen;
+			sourceTree = "<group>";
+		};
+		18BB79AD26AA670F000546C4 /* FilterScreen */ = {
+			isa = PBXGroup;
+			children = (
+				18CADABE2670DA4E0025C288 /* FiltersView.swift */,
+				1889E14326A1C27300092CF9 /* AllRecipesToggle.swift */,
+				1889E14526A1C3D700092CF9 /* CustomTextFieldForFilters.swift */,
+				1889E14126A1BB9500092CF9 /* CheckBoxes.swift */,
+				18CADAB72670DA4E0025C288 /* CheckBox.swift */,
+			);
+			path = FilterScreen;
+			sourceTree = "<group>";
+		};
+		18BB79AE26AA674C000546C4 /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				18BB79AD26AA670F000546C4 /* FilterScreen */,
+				18CADAB42670DA4E0025C288 /* Home.swift */,
+				18CADAAE2670DA4E0025C288 /* CategoryView.swift */,
+				1843A5752695B76E00D31E1C /* HomeHeader.swift */,
+			);
+			path = HomeScreen;
+			sourceTree = "<group>";
+		};
+		18BB79B026AA67EF000546C4 /* PurchasesScreen */ = {
+			isa = PBXGroup;
+			children = (
+				18CADAC02670DA4E0025C288 /* PurchasesView.swift */,
+				18E8F5D3269E08EF004925CE /* IngredientCellForPurchases.swift */,
+				18B61AC72670E3180008850F /* AddingIngredientView.swift */,
+				18CADAB92670DA4E0025C288 /* ConfirmationCleanIngredients.swift */,
+			);
+			path = PurchasesScreen;
+			sourceTree = "<group>";
+		};
+		18BB79B126AA684E000546C4 /* SettingsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				18CADABA2670DA4E0025C288 /* Settings.swift */,
+			);
+			path = SettingsScreen;
+			sourceTree = "<group>";
+		};
+		18BB79B226AA68CA000546C4 /* FavouriteScreen */ = {
+			isa = PBXGroup;
+			children = (
+				18CADABB2670DA4E0025C288 /* FavouriteView.swift */,
+			);
+			path = FavouriteScreen;
+			sourceTree = "<group>";
+		};
 		18CADA5F2670D9CD0025C288 = {
 			isa = PBXGroup;
 			children = (
@@ -212,30 +285,14 @@
 		18CADAAB2670DA4D0025C288 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				18BB79AE26AA674C000546C4 /* HomeScreen */,
+				18BB79B226AA68CA000546C4 /* FavouriteScreen */,
+				18BB79B026AA67EF000546C4 /* PurchasesScreen */,
+				18BB79B126AA684E000546C4 /* SettingsScreen */,
+				18BB79AB26AA66C4000546C4 /* FullRecipeScreen */,
 				18CADABD2670DA4E0025C288 /* ReceiptView.swift */,
-				18CADAC02670DA4E0025C288 /* PurchasesView.swift */,
-				18E8F5D3269E08EF004925CE /* IngredientCellForPurchases.swift */,
-				18CADAB62670DA4E0025C288 /* NewIngredientCell.swift */,
-				18CADAB82670DA4E0025C288 /* IngredientsView.swift */,
-				1843A5772695B7E800D31E1C /* FullRecipeForIphone.swift */,
 				18CADAAC2670DA4D0025C288 /* TabBar.swift */,
-				18CADAB52670DA4E0025C288 /* FullReceiptView.swift */,
-				18CADAC12670DA4E0025C288 /* ScrollButton.swift */,
-				18CADAAD2670DA4E0025C288 /* FullRecipeForIpad.swift */,
-				18CADAB42670DA4E0025C288 /* Home.swift */,
-				1843A5752695B76E00D31E1C /* HomeHeader.swift */,
-				18CADAB22670DA4E0025C288 /* CardView.swift */,
-				18CADAAE2670DA4E0025C288 /* CategoryView.swift */,
-				18CADABF2670DA4E0025C288 /* RecipeInfoView.swift */,
-				18B61AC72670E3180008850F /* AddingIngredientView.swift */,
-				18CADABE2670DA4E0025C288 /* FiltersView.swift */,
-				18CADAB92670DA4E0025C288 /* ConfirmationCleanIngredients.swift */,
-				18CADAAF2670DA4E0025C288 /* StepView.swift */,
 				18CADAB32670DA4E0025C288 /* TabButton.swift */,
-				18CADAB72670DA4E0025C288 /* CheckForСomplexity.swift */,
-				18CADABA2670DA4E0025C288 /* Settings.swift */,
-				18CADABB2670DA4E0025C288 /* FavouriteView.swift */,
-				18CADABC2670DA4E0025C288 /* EnergyValueView.swift */,
 				18B61AC12670E0B10008850F /* Data.swift */,
 			);
 			path = View;
@@ -379,8 +436,10 @@
 				18B61AC42670E13D0008850F /* ContentView.swift in Sources */,
 				18CADAEF2670DA4E0025C288 /* Settings.swift in Sources */,
 				18B61AC82670E3180008850F /* AddingIngredientView.swift in Sources */,
-				18CADAEC2670DA4E0025C288 /* CheckForСomplexity.swift in Sources */,
+				18CADAEC2670DA4E0025C288 /* CheckBox.swift in Sources */,
+				1889E14226A1BB9500092CF9 /* CheckBoxes.swift in Sources */,
 				18CADAE92670DA4E0025C288 /* Home.swift in Sources */,
+				1889E14626A1C3D700092CF9 /* CustomTextFieldForFilters.swift in Sources */,
 				18CADAF62670DA4E0025C288 /* ScrollButton.swift in Sources */,
 				18CADAE12670DA4E0025C288 /* TabBar.swift in Sources */,
 				18CADB092670DD520025C288 /* MilsApp.swift in Sources */,
@@ -399,6 +458,7 @@
 				18CADAD92670DA4E0025C288 /* Recipe.swift in Sources */,
 				18CADAE32670DA4E0025C288 /* CategoryView.swift in Sources */,
 				18CADACF2670DA4E0025C288 /* HomeViewModel.swift in Sources */,
+				1889E14426A1C27300092CF9 /* AllRecipesToggle.swift in Sources */,
 				18CADAF02670DA4E0025C288 /* FavouriteView.swift in Sources */,
 				18CADAF12670DA4E0025C288 /* EnergyValueView.swift in Sources */,
 				18B61AC22670E0B10008850F /* Data.swift in Sources */,

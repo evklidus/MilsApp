@@ -7,18 +7,18 @@
 
 import SwiftUI
 
-struct CheckForComplexity: View {
+struct CheckBox: View {
 //    @EnvironmentObject var homeVM: HomeViewModel
     
     var text : String
     
-    var image : String
+    var image : String = "square"
     
-    var imageForTap : String
+    var imageForTap : String = "checkmark.square"
     
     @State var tapped = true
     
-    @Binding var complexitysArr : [String]
+    @Binding var arr : [String]
     
     var body: some View {
         
@@ -44,16 +44,16 @@ struct CheckForComplexity: View {
             
             if !tapped {
                 
-                complexitysArr.remove(at: complexitysArr.firstIndex(of: text)!)
+                arr.remove(at: arr.firstIndex(of: text)!)
             }
             else {
                 
-                complexitysArr.append(text)
+                arr.append(text)
             }
         }
-        .onChange(of: complexitysArr, perform: { value in
+        .onChange(of: arr, perform: { value in
             
-            if complexitysArr.contains(text) {
+            if arr.contains(text) {
                 
                 tapped = true
             }

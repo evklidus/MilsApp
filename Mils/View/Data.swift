@@ -18,7 +18,7 @@ class OurData: ObservableObject {
                    rating: "4",
                    time: "10",
                    complexity: "легко",
-                   cost: "$",
+                   cost: "дешево",
                    kcal: "220", proteins: "9.5", fats: "20.0", carbohydrates: "0.5",
                    ingredients: [
                     Ingredient(id: "C1_R1_IN1", ingradientName: "Вода", weightPerPortion: "400", nameForWeight: "мл", secondId: "C1_R1_N"),
@@ -41,7 +41,7 @@ class OurData: ObservableObject {
                    rating: "4",
                    time: "25",
                    complexity: "средне",
-                   cost: "$",
+                   cost: "средне",
                    kcal: "570", proteins: "44.2", fats: "2.8", carbohydrates: "90.8",
                    ingredients: [
                     Ingredient(id: "C1_R2_IN1", ingradientName: "Лапша удон", weightPerPortion: "100", nameForWeight: "г", secondId: "C1_R2_N"),
@@ -434,9 +434,9 @@ class OurData: ObservableObject {
                     "https://volshebnaya-eda.ru/wp-content/uploads/2018/03/rostbif-iz-govyadiny-6.jpg",
                    ],
                    rating: "5",
-                   time: "30",
+                   time: "45",
                    complexity: "сложно",
-                   cost: "$$",
+                   cost: "дорого",
                    kcal: "175", proteins: "81.2", fats: "6.8", carbohydrates: "11.4",
                    ingredients: [
                     Ingredient(id: "C2_R1_IN1", ingradientName: "Говядина", weightPerPortion: "250", nameForWeight: "г", secondId: "C2_R1_N"),

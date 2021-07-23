@@ -7,30 +7,6 @@
 
 import SwiftUI
 
-struct CustomTextFieldForFilters : View {
-    
-    @Binding var text : String
-    
-    var grayText : String
-    
-    var supportText : String
-    
-    var body : some View {
-        
-        HStack(spacing: 3) {
-            Text(supportText)
-                .foregroundColor(.gray)
-            
-            TextField(grayText, text: $text)
-        }
-        .padding(.vertical, 8)
-        .padding(.horizontal, 12)
-        .background(Color.black.opacity(0.05))
-        .cornerRadius(10)
-        .accentColor(Color.init(#colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)).opacity(0.75))
-    }
-}
-
 struct FiltersView: View {
     @EnvironmentObject var homeVM : HomeViewModel
     
@@ -45,6 +21,10 @@ struct FiltersView: View {
     @State var offset: CGSize = CGSize.zero
     
     @State var complexitysArr : [String] = ["легко", "средне", "сложно"]
+    
+    @State var timesArr : [String] = ["быстро", "средне", "долго"]
+    
+    @State var costsArr : [String] = ["дешево", "средне", "дорого"]
     
     var height : CGFloat {
         
@@ -74,7 +54,6 @@ struct FiltersView: View {
                     Spacer()
                     
                     Button(action: {
-                        
                         withAnimation {homeVM.filtersPresent = false}
                         withAnimation {homeVM.hideKeyboard()}
                     }) {
@@ -88,52 +67,43 @@ struct FiltersView: View {
             .padding()
             
             List {
-                
-                HStack {
                     
-                    Text("Показать все рецепты")
-                        .foregroundColor(.black)
-                        .font(.callout)
+                AllRecipesToggle(showAllRecipes: $showAllRecipes)
+//                    .onChange(of: geo.frame(in: .local).minY) { value in
+//                        DispatchQueue.main.async {
+//
+//                            if value < 0 {
+//
+//                                homeVM.filtersPresent = false
+//                            }
+//                            print(value)
+//                        }
+//                    }
                     
-                    Spacer()
-                    
-                    Toggle(isOn: withAnimation {$showAllRecipes}) {Text("")}
-                        .toggleStyle(SwitchToggleStyle(tint: Color.init(#colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1))))
-                        .labelsHidden()
-                }
-                .padding(.vertical, 10)
-                .padding(.horizontal)
-                .background(Color.black.opacity(0.05))
-                .cornerRadius(14)
-                
-                VStack {
-                    
-                    Text("Калории")
-                        .font(.callout)
-                        .foregroundColor(.black)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    
-                    HStack {
-                        CustomTextFieldForFilters(text: $caloriesStart, grayText: "0", supportText: "от")
-                        CustomTextFieldForFilters(text: $caloriesEnd, grayText: "600", supportText: "до")
+                    VStack {
+                        
+                        Text("Калории")
+                            .font(.callout)
+                            .foregroundColor(.black)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        HStack {
+                            CustomTextFieldForFilters(text: $caloriesStart, grayText: "0", supportText: "от")
+                            CustomTextFieldForFilters(text: $caloriesEnd, grayText: "600", supportText: "до")
+                        }
+                        
+                        //                    Slider(value: $calories, in: 0...600, step: 1)
                     }
+                    .padding(.vertical, 5)
                     
-//                    Slider(value: $calories, in: 0...600, step: 1)
-                }
-                .padding(.bottom, 5)
-                
-                VStack {
+                    CheckBoxes(arr: $complexitysArr, text: "Сложность", textsForCheck: ["легко", "средне", "сложно"])
                     
-                    Text("Сложность")
-                        .font(.callout)
-                        .foregroundColor(.black)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    CheckBoxes(arr: $timesArr, text: "Время", textsForCheck: ["быстро", "средне", "долго"])
                     
-                    CheckForComplexity(text: "легко", image: "square", imageForTap: "checkmark.square", complexitysArr: $complexitysArr)
-                    CheckForComplexity(text: "средне", image: "square", imageForTap: "checkmark.square", complexitysArr: $complexitysArr)
-                    CheckForComplexity(text: "сложно", image: "square", imageForTap: "checkmark.square", complexitysArr: $complexitysArr)
-                }
+                    CheckBoxes(arr: $costsArr, text: "Цена", textsForCheck: ["дешево", "средне", "дорого"])
+//                }
             }
+            .listStyle(PlainListStyle())
             
             Button(action: {
                 if editing {
@@ -142,6 +112,8 @@ struct FiltersView: View {
                     homeVM.caloriesEnd = Int(caloriesEnd)!
                     homeVM.showAllRecipes = showAllRecipes
                     homeVM.complexitysArr = complexitysArr
+                    homeVM.timesArr = timesArr
+                    homeVM.costsArr = costsArr
                     
                     withAnimation {homeVM.filtersPresent = false}
                 }
@@ -157,12 +129,13 @@ struct FiltersView: View {
                     .padding(.vertical)
                     .background(Color.orange)
                     .cornerRadius(14)
-                    .padding()
+                    .padding([.horizontal, .bottom])
+                    .padding(.top, 5)
             }
         }
         .background(Color.white.cornerRadius(20).ignoresSafeArea())
         .offset(y: homeVM.filtersPresent ? 0 : height)
-        .offset(y: offset.height)
+//        .offset(y: offset.height)
 //        .gesture(
 //            DragGesture()
 //                .onChanged { gesture in
@@ -177,7 +150,7 @@ struct FiltersView: View {
 //                    }
 //                }
 //        )
-        .onChange(of: homeVM.filtersPresent, perform: { value in
+        .onChange(of: homeVM.filtersPresent, perform: { value in //
             withAnimation {editing = false}
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 if value == false {
@@ -193,6 +166,12 @@ struct FiltersView: View {
                     }
                     if complexitysArr != homeVM.complexitysArr {
                         complexitysArr = homeVM.complexitysArr
+                    }// timesArr
+                    if timesArr != homeVM.timesArr {
+                        timesArr = homeVM.timesArr
+                    }
+                    if costsArr != homeVM.costsArr {
+                        costsArr = homeVM.costsArr
                     }
                 }
             }
@@ -207,6 +186,12 @@ struct FiltersView: View {
             withAnimation {editing = true}
         })
         .onChange(of: complexitysArr, perform: { value in
+            withAnimation {editing = true}
+        })
+        .onChange(of: timesArr, perform: { value in
+            withAnimation {editing = true}
+        })
+        .onChange(of: costsArr, perform: { value in
             withAnimation {editing = true}
         })
     }

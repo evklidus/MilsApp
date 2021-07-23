@@ -23,13 +23,11 @@ class HomeViewModel: ObservableObject {
     
     @Published var caloriesEnd = 600
     
-    @Published var easyComplexity = true
-    
-    @Published var mediumComplexity = true
-    
-    @Published var hardComplexity = true
-    
     @Published var complexitysArr : [String] = ["легко", "средне", "сложно"]
+    
+    @Published var timesArr : [String] = ["быстро", "средне", "долго"]
+    
+    @Published var costsArr : [String] = ["дешево", "средне", "дорого"]
     
     @Published(key: "10") var bookmarskArray: [Recipe] = []
     
@@ -67,6 +65,7 @@ class HomeViewModel: ObservableObject {
                     
                     let index = bookmarskArray.firstIndex(of: deleteRecipe)
                     bookmarskArray.remove(at: index!)
+                    simpleSuccess(style: .light)
                 }
             }
         }

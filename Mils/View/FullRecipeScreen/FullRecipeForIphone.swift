@@ -144,11 +144,11 @@ struct FullRecipeForIphone: View {
                             
                             HStack {
                                 
-                                RecipeInfoView(width: geo.size.width, image: "⏱", text: "\(recipe.time) м", bgColor: UIColor.init(Color.init(#colorLiteral(red: 0.9998165965, green: 0.8103166819, blue: 0.6789484024, alpha: 1))))
+                                RecipeInfoView(width: geo.size.width, image: "⏱", text: "\(recipe.time) м", subText: "Время", bgColor: UIColor.init(Color.init(#colorLiteral(red: 0.9998165965, green: 0.8103166819, blue: 0.6789484024, alpha: 1))))
                                 Spacer(minLength: 0)
-                                RecipeInfoView(width: geo.size.width, image: "🙃", text: recipe.complexity, bgColor: UIColor.init(Color.init(#colorLiteral(red: 0.6981404424, green: 0.724893868, blue: 1, alpha: 1))))
+                                RecipeInfoView(width: geo.size.width, image: "👩🏻‍🍳", text: recipe.complexity, subText: "Сложность", bgColor: UIColor.init(Color.init(#colorLiteral(red: 0.6981404424, green: 0.724893868, blue: 1, alpha: 1))))
                                 Spacer(minLength: 0)
-                                RecipeInfoView(width: geo.size.width, image: "🤑", text: recipe.cost, bgColor: UIColor.init(Color.init(#colorLiteral(red: 0.4602553248, green: 0.8694165349, blue: 0.7679057717, alpha: 1))))
+                                RecipeInfoView(width: geo.size.width, image: "🤑", text: recipe.cost, subText: "Цена", bgColor: UIColor.init(Color.init(#colorLiteral(red: 0.4602553248, green: 0.8694165349, blue: 0.7679057717, alpha: 1))))
                             }
                             .padding(.horizontal, geo.size.width / 20)
                             .padding(.bottom, geo.size.width / 35)

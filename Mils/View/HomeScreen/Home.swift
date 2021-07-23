@@ -21,6 +21,18 @@ struct Home: View {
     
     @State var reader1 : CGFloat = 0
     
+    func checkTime(time : String) -> String {
+        let intTime = Int(time)!
+        switch intTime {
+        case 0...20:
+            return "быстро"
+        case 21...40:
+            return "средне"
+        default:
+            return "долго"
+        }
+    }
+    
     var body: some View {
         
         if horizontalSizeClass == .compact {
@@ -33,67 +45,64 @@ struct Home: View {
                     HomeHeader(data: data, width: geo.size.width, showSmallCategories: $showSmallCategories, search: self.$search, allRecipesPresent: self.$allRecipesPresent)
                         .zIndex(1)
                     
-                    ScrollView(showsIndicators: false) {
-                        
-                        VStack {
-                            if !allRecipesPresent && !homeVM.showAllRecipes {
+                    ScrollView(.vertical) {
+                        if !allRecipesPresent && !homeVM.showAllRecipes {
+                            
+                            ScrollView(.horizontal, showsIndicators: false) {
                                 
-                                ScrollView(.horizontal, showsIndicators: false) {
+                                HStack {
+                                    ForEach(data.categories) { category in
+                                        
+                                        CategoryView(category: category, width: geo.size.width, image: true)
+                                            .onTapGesture {
+                                                withAnimation {homeVM.choicedCategory = category}
+                                            }
+                                    }
+                                }
+                                .padding(.leading, 20)
+                            }
+                            .id("TOP")
+                            .onChange(of: homeVM.choicedCategory) { _ in
+                                withAnimation {scrollReader.scrollTo("TOP", anchor: .top)}
+                            }
+                            
+                            GeometryReader { reader in
+                                HStack {
                                     
-                                    HStack {
-                                        ForEach(data.categories) { category in
+                                    Text(homeVM.choicedCategory.name)
+                                        .foregroundColor(homeVM.darkTheme ? .white : .black)
+                                        .fontWeight(.heavy)
+                                        .font(.system(size: geo.size.width / 20))
+                                    
+                                    Spacer()
+                                }
+                                .padding(.leading, horizontalSizeClass == .compact ? 20 : 40)
+                                .onChange(of: reader.frame(in: .global).minY) { value in
+                                    DispatchQueue.main.async {
+                                        
+                                        if value < geo.size.width / 2 {
                                             
-                                            CategoryView(category: category, width: geo.size.width, image: true)
-                                                .onTapGesture {
-                                                    withAnimation {homeVM.choicedCategory = category}
-                                                }
+                                            showSmallCategories = true
                                         }
-                                    }
-                                    .padding(.leading, 20)
-                                }
-                                .id("TOP")
-                                .onChange(of: homeVM.choicedCategory) { _ in
-                                    withAnimation {scrollReader.scrollTo("TOP", anchor: .top)}
-                                }
-                                
-                                GeometryReader { reader in
-                                    HStack {
-                                        
-                                        Text(homeVM.choicedCategory.name)
-                                            .foregroundColor(homeVM.darkTheme ? .white : .black)
-                                            .fontWeight(.heavy)
-                                            .font(.system(size: geo.size.width / 20))
-                                        
-                                        Spacer()
-                                    }
-                                    .padding(.leading, horizontalSizeClass == .compact ? 20 : 40)
-                                    .onChange(of: reader.frame(in: .global).minY) { value in
-                                        DispatchQueue.main.async {
+                                        else {
                                             
-                                            if value < geo.size.width / 2 {
-                                                
-                                                showSmallCategories = true
-                                            }
-                                            else {
-                                                
-                                                showSmallCategories = false
-                                            }
+                                            showSmallCategories = false
                                         }
                                     }
                                 }
                             }
-                            
-                            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 25), count: 2), alignment: .leading, spacing:  homeVM.darkTheme ? 25 : 15) {
-                                ForEach(allRecipesPresent ? homeVM.allRecipes.filter{$0.name.contains(search)} : homeVM.showAllRecipes ? homeVM.allRecipes.filter{(homeVM.caloriesStart...homeVM.caloriesEnd).contains(Int($0.kcal)!) && homeVM.complexitysArr.contains($0.complexity)} :  homeVM.choicedCategory.recipes.filter{(homeVM.caloriesStart...homeVM.caloriesEnd).contains(Int($0.kcal)!) && homeVM.complexitysArr.contains($0.complexity)}) { recipe in
-                                    
-                                    ReceiptView(recipe: recipe, width: geo.size.width)
-                                }
-                            }
-                            .padding(20)
-                            
-                            Spacer()
-                                .frame(height: geo.size.width / 6)
                         }
+                        
+                        LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 25), count: 2), alignment: .leading, spacing:  homeVM.darkTheme ? 25 : 15) {
+                            ForEach(allRecipesPresent ? homeVM.allRecipes.filter{$0.name.contains(search)} : homeVM.showAllRecipes ? homeVM.allRecipes.filter{(homeVM.caloriesStart...homeVM.caloriesEnd).contains(Int($0.kcal)!) && homeVM.complexitysArr.contains($0.complexity) && homeVM.timesArr.contains(checkTime(time: $0.time)) && homeVM.costsArr.contains($0.cost)} :  homeVM.choicedCategory.recipes.filter{(homeVM.caloriesStart...homeVM.caloriesEnd).contains(Int($0.kcal)!) && homeVM.complexitysArr.contains($0.complexity) && homeVM.timesArr.contains(checkTime(time: $0.time)) && homeVM.costsArr.contains($0.cost)}) { recipe in
+                                
+                                ReceiptView(recipe: recipe, width: geo.size.width)
+                            }
+                        }
+                        .padding(20)
+                        
+                        Spacer()
+                            .frame(height: geo.size.width / 6)
                     }
                     .zIndex(0)
                     .padding(.top, geo.size.width / 6)

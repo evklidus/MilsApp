@@ -17,22 +17,29 @@ struct RecipeInfoView: View {
     
     var text : String
     
+    var subText : String
+    
     var bgColor : UIColor
     
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
     var body: some View {
         
-        VStack(spacing: 12) {
+        VStack {
             
             Text(image)
                 .font(.system(size: horizontalSizeClass == .compact ? width / 12 : width / 36))
                 .foregroundColor(.white)
+                .padding(.bottom, 5)
+            
+            Text(subText)
+                .font(.system(size: horizontalSizeClass == .compact ? width / 35 : width / 75, weight: .light))
+                .foregroundColor(.white)
+                .foregroundStyle(.secondary)
             
             Text(text)
                 .font(.system(size: horizontalSizeClass == .compact ? width / 25 : width / 75, weight: .bold))
                 .foregroundColor(.white)
-//                .padding(.top, 2)
         }
         .padding()
         .frame(width: horizontalSizeClass == .compact ? width / 3.8 : width / 11)

@@ -9,9 +9,14 @@ import SwiftUI
 
 struct TabBar: View {
     @ObservedObject var data : OurData
-    
     @EnvironmentObject var homeVM: HomeViewModel
+    
     @State var current = "Главное"
+    
+//    enum selectedTab {
+//        case home
+//        case
+//    }
     
     var width : CGFloat {
         get {
@@ -33,13 +38,10 @@ struct TabBar: View {
         
         ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
             
-            //            if device == .phone {
-            
             TabView(selection: $current) {
                 
                 Home(data: data)
                     .tag("Главное")
-//                    .animation(.easeIn(duration: 5))
                 
                 FavouriteView()
                     .tag("Избранное")
@@ -74,6 +76,7 @@ struct TabBar: View {
                 .ignoresSafeArea()
             }
         }
+        .animation(.default)
         .ignoresSafeArea(.keyboard)
         .preferredColorScheme(homeVM.darkTheme ? .dark : .light)
         .onAppear(){
@@ -99,18 +102,20 @@ struct TabBar: View {
                         .onTapGesture {
                             withAnimation {homeVM.isPresentAddingIngredient.toggle()}
                             homeVM.hideKeyboard()
-                        }
+        }
                 )
                 .opacity(homeVM.isPresentAddingIngredient ? 1 : 0)
         )
         .overlay(
             FiltersView()
-                .frame(height: height / 1.15)
+                .frame(height: height / 1.155)
                 .background(
                     Color.black.ignoresSafeArea().frame(width: width, height: height).opacity(homeVM.filtersPresent ? 0.3 : 0)
                         .onTapGesture {
-                            withAnimation {homeVM.filtersPresent.toggle()}
-            withAnimation {homeVM.hideKeyboard()}
+                            DispatchQueue.main.async {
+                                withAnimation {homeVM.filtersPresent.toggle()}
+                                withAnimation {homeVM.hideKeyboard()}
+                            }
                         }
                 )
                 .frame(maxHeight: .infinity, alignment: .bottom)
