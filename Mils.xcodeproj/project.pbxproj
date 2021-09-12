@@ -7,19 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18330E8C26DC0C0F00A84FD0 /* CacheAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18330E8B26DC0C0F00A84FD0 /* CacheAsyncImage.swift */; };
 		1843A5762695B76E00D31E1C /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1843A5752695B76E00D31E1C /* HomeHeader.swift */; };
 		1843A5782695B7E800D31E1C /* FullRecipeForIphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1843A5772695B7E800D31E1C /* FullRecipeForIphone.swift */; };
 		18861FE326947BDE0001E6B8 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18861FE226947BDE0001E6B8 /* Ingredient.swift */; };
 		1889E14226A1BB9500092CF9 /* CheckBoxes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1889E14126A1BB9500092CF9 /* CheckBoxes.swift */; };
 		1889E14426A1C27300092CF9 /* AllRecipesToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1889E14326A1C27300092CF9 /* AllRecipesToggle.swift */; };
 		1889E14626A1C3D700092CF9 /* CustomTextFieldForFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1889E14526A1C3D700092CF9 /* CustomTextFieldForFilters.swift */; };
+		188B2ADC26E5305C001CF5B8 /* StepsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B2ADB26E5305C001CF5B8 /* StepsScreen.swift */; };
+		188B2ADE26E53D5B001CF5B8 /* IBMPlexSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 188B2ADD26E53D5B001CF5B8 /* IBMPlexSerif-Bold.ttf */; };
 		18B61AC02670DE080008850F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18B61ABF2670DE080008850F /* Assets.xcassets */; };
 		18B61AC22670E0B10008850F /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B61AC12670E0B10008850F /* Data.swift */; };
 		18B61AC42670E13D0008850F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B61AC32670E13D0008850F /* ContentView.swift */; };
 		18B61AC82670E3180008850F /* AddingIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B61AC72670E3180008850F /* AddingIngredientView.swift */; };
 		18CADA732670D9CE0025C288 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18CADA722670D9CE0025C288 /* Preview Assets.xcassets */; };
-		18CADA7E2670D9CE0025C288 /* MilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CADA7D2670D9CE0025C288 /* MilsTests.swift */; };
-		18CADA892670D9CE0025C288 /* MilsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CADA882670D9CE0025C288 /* MilsUITests.swift */; };
 		18CADACF2670DA4E0025C288 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CADA982670DA4D0025C288 /* HomeViewModel.swift */; };
 		18CADAD92670DA4E0025C288 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CADAA32670DA4D0025C288 /* Recipe.swift */; };
 		18CADADA2670DA4E0025C288 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CADAA42670DA4D0025C288 /* Category.swift */; };
@@ -47,30 +48,29 @@
 		18E8F5D4269E08EF004925CE /* IngredientCellForPurchases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E8F5D3269E08EF004925CE /* IngredientCellForPurchases.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		18CADA7A2670D9CE0025C288 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 18CADA602670D9CD0025C288 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 18CADA672670D9CD0025C288;
-			remoteInfo = Mils;
+/* Begin PBXCopyFilesBuildPhase section */
+		1883BDE626B1A4DF00CB37A7 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
-		18CADA852670D9CE0025C288 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 18CADA602670D9CD0025C288 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 18CADA672670D9CD0025C288;
-			remoteInfo = Mils;
-		};
-/* End PBXContainerItemProxy section */
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		18330E8B26DC0C0F00A84FD0 /* CacheAsyncImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CacheAsyncImage.swift; path = "../../../../../../Downloads/Pokedex-main/Pokedex/Cache/CacheAsyncImage.swift"; sourceTree = "<group>"; };
 		1843A5752695B76E00D31E1C /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
 		1843A5772695B7E800D31E1C /* FullRecipeForIphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullRecipeForIphone.swift; sourceTree = "<group>"; };
 		18861FE226947BDE0001E6B8 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		1889E14126A1BB9500092CF9 /* CheckBoxes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxes.swift; sourceTree = "<group>"; };
 		1889E14326A1C27300092CF9 /* AllRecipesToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecipesToggle.swift; sourceTree = "<group>"; };
 		1889E14526A1C3D700092CF9 /* CustomTextFieldForFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldForFilters.swift; sourceTree = "<group>"; };
+		188B2ADB26E5305C001CF5B8 /* StepsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsScreen.swift; sourceTree = "<group>"; };
+		188B2ADD26E53D5B001CF5B8 /* IBMPlexSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSerif-Bold.ttf"; sourceTree = "<group>"; };
 		18B61ABF2670DE080008850F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18B61AC12670E0B10008850F /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		18B61AC32670E13D0008850F /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -78,12 +78,6 @@
 		18CADA682670D9CD0025C288 /* Mils.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mils.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18CADA722670D9CE0025C288 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		18CADA742670D9CE0025C288 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18CADA792670D9CE0025C288 /* MilsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MilsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		18CADA7D2670D9CE0025C288 /* MilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilsTests.swift; sourceTree = "<group>"; };
-		18CADA7F2670D9CE0025C288 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18CADA842670D9CE0025C288 /* MilsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MilsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		18CADA882670D9CE0025C288 /* MilsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilsUITests.swift; sourceTree = "<group>"; };
-		18CADA8A2670D9CE0025C288 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18CADA982670DA4D0025C288 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		18CADAA32670DA4D0025C288 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		18CADAA42670DA4D0025C288 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -119,20 +113,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		18CADA762670D9CE0025C288 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		18CADA812670D9CE0025C288 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -141,10 +121,11 @@
 			children = (
 				18CADAB52670DA4E0025C288 /* FullReceiptView.swift */,
 				1843A5772695B7E800D31E1C /* FullRecipeForIphone.swift */,
+				188B2ADB26E5305C001CF5B8 /* StepsScreen.swift */,
+				18CADAB22670DA4E0025C288 /* CardView.swift */,
 				18CADAAD2670DA4E0025C288 /* FullRecipeForIpad.swift */,
 				18CADABC2670DA4E0025C288 /* EnergyValueView.swift */,
 				18CADAB82670DA4E0025C288 /* IngredientsView.swift */,
-				18CADAB22670DA4E0025C288 /* CardView.swift */,
 				18CADAAF2670DA4E0025C288 /* StepView.swift */,
 				18CADABF2670DA4E0025C288 /* RecipeInfoView.swift */,
 				18CADAC12670DA4E0025C288 /* ScrollButton.swift */,
@@ -207,8 +188,6 @@
 			isa = PBXGroup;
 			children = (
 				18CADA6A2670D9CD0025C288 /* Mils */,
-				18CADA7C2670D9CE0025C288 /* MilsTests */,
-				18CADA872670D9CE0025C288 /* MilsUITests */,
 				18CADA692670D9CD0025C288 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -217,8 +196,6 @@
 			isa = PBXGroup;
 			children = (
 				18CADA682670D9CD0025C288 /* Mils.app */,
-				18CADA792670D9CE0025C288 /* MilsTests.xctest */,
-				18CADA842670D9CE0025C288 /* MilsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -230,7 +207,7 @@
 				18B61AC32670E13D0008850F /* ContentView.swift */,
 				18CADAA22670DA4D0025C288 /* Model */,
 				18CADA972670DA4D0025C288 /* HomeViewModel */,
-				18CADAAB2670DA4D0025C288 /* View */,
+				18CADAAB2670DA4D0025C288 /* Screens */,
 				18CADA742670D9CE0025C288 /* Info.plist */,
 				18B61ABF2670DE080008850F /* Assets.xcassets */,
 				18CADA712670D9CE0025C288 /* Preview Content */,
@@ -244,24 +221,6 @@
 				18CADA722670D9CE0025C288 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		18CADA7C2670D9CE0025C288 /* MilsTests */ = {
-			isa = PBXGroup;
-			children = (
-				18CADA7D2670D9CE0025C288 /* MilsTests.swift */,
-				18CADA7F2670D9CE0025C288 /* Info.plist */,
-			);
-			path = MilsTests;
-			sourceTree = "<group>";
-		};
-		18CADA872670D9CE0025C288 /* MilsUITests */ = {
-			isa = PBXGroup;
-			children = (
-				18CADA882670D9CE0025C288 /* MilsUITests.swift */,
-				18CADA8A2670D9CE0025C288 /* Info.plist */,
-			);
-			path = MilsUITests;
 			sourceTree = "<group>";
 		};
 		18CADA972670DA4D0025C288 /* HomeViewModel */ = {
@@ -282,7 +241,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		18CADAAB2670DA4D0025C288 /* View */ = {
+		18CADAAB2670DA4D0025C288 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				18BB79AE26AA674C000546C4 /* HomeScreen */,
@@ -294,8 +253,10 @@
 				18CADAAC2670DA4D0025C288 /* TabBar.swift */,
 				18CADAB32670DA4E0025C288 /* TabButton.swift */,
 				18B61AC12670E0B10008850F /* Data.swift */,
+				18330E8B26DC0C0F00A84FD0 /* CacheAsyncImage.swift */,
+				188B2ADD26E53D5B001CF5B8 /* IBMPlexSerif-Bold.ttf */,
 			);
-			path = View;
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +269,7 @@
 				18CADA642670D9CD0025C288 /* Sources */,
 				18CADA652670D9CD0025C288 /* Frameworks */,
 				18CADA662670D9CD0025C288 /* Resources */,
+				1883BDE626B1A4DF00CB37A7 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
@@ -320,61 +282,17 @@
 			productReference = 18CADA682670D9CD0025C288 /* Mils.app */;
 			productType = "com.apple.product-type.application";
 		};
-		18CADA782670D9CE0025C288 /* MilsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 18CADA902670D9CE0025C288 /* Build configuration list for PBXNativeTarget "MilsTests" */;
-			buildPhases = (
-				18CADA752670D9CE0025C288 /* Sources */,
-				18CADA762670D9CE0025C288 /* Frameworks */,
-				18CADA772670D9CE0025C288 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				18CADA7B2670D9CE0025C288 /* PBXTargetDependency */,
-			);
-			name = MilsTests;
-			productName = MilsTests;
-			productReference = 18CADA792670D9CE0025C288 /* MilsTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		18CADA832670D9CE0025C288 /* MilsUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 18CADA932670D9CE0025C288 /* Build configuration list for PBXNativeTarget "MilsUITests" */;
-			buildPhases = (
-				18CADA802670D9CE0025C288 /* Sources */,
-				18CADA812670D9CE0025C288 /* Frameworks */,
-				18CADA822670D9CE0025C288 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				18CADA862670D9CE0025C288 /* PBXTargetDependency */,
-			);
-			name = MilsUITests;
-			productName = MilsUITests;
-			productReference = 18CADA842670D9CE0025C288 /* MilsUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		18CADA602670D9CD0025C288 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1250;
+				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					18CADA672670D9CD0025C288 = {
 						CreatedOnToolsVersion = 12.5;
-					};
-					18CADA782670D9CE0025C288 = {
-						CreatedOnToolsVersion = 12.5;
-						TestTargetID = 18CADA672670D9CD0025C288;
-					};
-					18CADA832670D9CE0025C288 = {
-						CreatedOnToolsVersion = 12.5;
-						TestTargetID = 18CADA672670D9CD0025C288;
 					};
 				};
 			};
@@ -394,8 +312,6 @@
 			projectRoot = "";
 			targets = (
 				18CADA672670D9CD0025C288 /* Mils */,
-				18CADA782670D9CE0025C288 /* MilsTests */,
-				18CADA832670D9CE0025C288 /* MilsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -406,21 +322,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				18B61AC02670DE080008850F /* Assets.xcassets in Resources */,
+				188B2ADE26E53D5B001CF5B8 /* IBMPlexSerif-Bold.ttf in Resources */,
 				18CADA732670D9CE0025C288 /* Preview Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		18CADA772670D9CE0025C288 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		18CADA822670D9CE0025C288 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,10 +360,12 @@
 				18CADAF22670DA4E0025C288 /* ReceiptView.swift in Sources */,
 				18CADAD92670DA4E0025C288 /* Recipe.swift in Sources */,
 				18CADAE32670DA4E0025C288 /* CategoryView.swift in Sources */,
+				18330E8C26DC0C0F00A84FD0 /* CacheAsyncImage.swift in Sources */,
 				18CADACF2670DA4E0025C288 /* HomeViewModel.swift in Sources */,
 				1889E14426A1C27300092CF9 /* AllRecipesToggle.swift in Sources */,
 				18CADAF02670DA4E0025C288 /* FavouriteView.swift in Sources */,
 				18CADAF12670DA4E0025C288 /* EnergyValueView.swift in Sources */,
+				188B2ADC26E5305C001CF5B8 /* StepsScreen.swift in Sources */,
 				18B61AC22670E0B10008850F /* Data.swift in Sources */,
 				18E8F5D4269E08EF004925CE /* IngredientCellForPurchases.swift in Sources */,
 				18CADADA2670DA4E0025C288 /* Category.swift in Sources */,
@@ -468,36 +373,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		18CADA752670D9CE0025C288 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				18CADA7E2670D9CE0025C288 /* MilsTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		18CADA802670D9CE0025C288 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				18CADA892670D9CE0025C288 /* MilsUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		18CADA7B2670D9CE0025C288 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 18CADA672670D9CD0025C288 /* Mils */;
-			targetProxy = 18CADA7A2670D9CE0025C288 /* PBXContainerItemProxy */;
-		};
-		18CADA862670D9CE0025C288 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 18CADA672670D9CD0025C288 /* Mils */;
-			targetProxy = 18CADA852670D9CE0025C288 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		18CADA8B2670D9CE0025C288 /* Debug */ = {
@@ -551,7 +427,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -606,7 +482,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -660,90 +536,6 @@
 			};
 			name = Release;
 		};
-		18CADA912670D9CE0025C288 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 82K782Z22H;
-				INFOPLIST_FILE = MilsTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Minasov-inc.MilsTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mils.app/Mils";
-			};
-			name = Debug;
-		};
-		18CADA922670D9CE0025C288 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 82K782Z22H;
-				INFOPLIST_FILE = MilsTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Minasov-inc.MilsTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mils.app/Mils";
-			};
-			name = Release;
-		};
-		18CADA942670D9CE0025C288 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 82K782Z22H;
-				INFOPLIST_FILE = MilsUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Minasov-inc.MilsUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Mils;
-			};
-			name = Debug;
-		};
-		18CADA952670D9CE0025C288 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 82K782Z22H;
-				INFOPLIST_FILE = MilsUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Minasov-inc.MilsUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Mils;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -761,24 +553,6 @@
 			buildConfigurations = (
 				18CADA8E2670D9CE0025C288 /* Debug */,
 				18CADA8F2670D9CE0025C288 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		18CADA902670D9CE0025C288 /* Build configuration list for PBXNativeTarget "MilsTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				18CADA912670D9CE0025C288 /* Debug */,
-				18CADA922670D9CE0025C288 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		18CADA932670D9CE0025C288 /* Build configuration list for PBXNativeTarget "MilsUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				18CADA942670D9CE0025C288 /* Debug */,
-				18CADA952670D9CE0025C288 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

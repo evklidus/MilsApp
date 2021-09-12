@@ -38,7 +38,7 @@ struct IngredientsView: View {
                     .foregroundColor(homeVM.darkTheme ? .white : .black)
                     .fontWeight(.bold)
                     .font(.system(size: pad ? width / 54 : width / 18))
-                    .frame(height: pad ? width / 36 : width / 12)
+//                    .frame(height: pad ? width / 36 : width / 12)
                 
                 Spacer()
                 
@@ -51,9 +51,10 @@ struct IngredientsView: View {
                     Stepper("", value: $multiplier, in: 1...100)
                         .colorScheme(homeVM.darkTheme ? .dark : .light)
                         .labelsHidden()
-                        .frame(height: pad ? width / 36 : width / 12)
+                        .animation(.easeInOut)
                 }
             }
+            .frame(height: pad ? width / 36 : width / 12)
             
             ForEach(homeVM.choicedRecipe.ingredients, id: \.self) { ingredient in
                 

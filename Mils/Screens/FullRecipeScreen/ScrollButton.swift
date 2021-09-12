@@ -50,9 +50,9 @@ struct ScrollButton : View {
                 .foregroundColor(.white)
                 .fontWeight(.heavy)
             
-            Image(systemName: "arrowtriangle.down.fill")
-                .font(.system(size: width / 32))
-                .foregroundColor(.white)
+//            Image(systemName: "arrowtriangle.down.fill")
+//                .font(.system(size: width / 32))
+//                .foregroundColor(.white)
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, width / 35)

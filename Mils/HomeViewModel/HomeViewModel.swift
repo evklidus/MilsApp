@@ -44,6 +44,8 @@ class HomeViewModel: ObservableObject {
     
     @Published var confirmationCleanIngredients : Bool = false
     
+    @Published var startCook : Bool = false
+    
     func choiceRecipe(recipe: Recipe) {
         choicedRecipe = recipe
         withAnimation {isPresent.toggle()}

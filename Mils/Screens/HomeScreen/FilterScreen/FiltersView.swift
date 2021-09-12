@@ -134,7 +134,7 @@ struct FiltersView: View {
             }
         }
         .background(Color.white.cornerRadius(20).ignoresSafeArea())
-        .offset(y: homeVM.filtersPresent ? 0 : height)
+//        .offset(y: homeVM.filtersPresent ? 0 : height)
 //        .offset(y: offset.height)
 //        .gesture(
 //            DragGesture()
